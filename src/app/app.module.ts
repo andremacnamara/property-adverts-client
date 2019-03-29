@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
+import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
 
 import { appRoutes } from './routes';
@@ -23,7 +24,9 @@ import { appRoutes } from './routes';
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes)
    ],
-   providers: [],
+   providers: [
+      AuthService
+   ],
    bootstrap: [
       AppComponent
    ]
