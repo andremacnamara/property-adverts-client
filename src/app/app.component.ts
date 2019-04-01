@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './_services/auth.service';
+import { JwtHelperService} from '@auth0/angular-jwt';
+import { User } from './_models/user';
+
 
 @Component({
   selector: 'app-root',
@@ -9,25 +11,20 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
-  baseUrl = environment.apiUrl;
-  title = 'PropertyAdverts-Client';
+  jwtHelper = new JwtHelperService();
 
-  values: any;
-
-
-  constructor (private http: HttpClient) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.getValues();
-  }
+    const token = localStorage.getItem('token');
+    const user: User  = JSON.parse(localStorage.getItem('user'));
 
-  getValues() {
-    this.http.get('http://127.0.0.1:8000/api/properties').subscribe(response => {
-      this.values = response;
-    }, error => {
-      console.log(error);
-    });
-  }
+    if (token) {
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
 
+    if (user) {
+      this.authService.currentUser = user;
+    }
+  }
 }
-

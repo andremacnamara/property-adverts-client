@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from '../_models/user';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.createRegisterForm();
@@ -39,8 +40,11 @@ export class RegisterComponent implements OnInit {
         console.log('Successfully Registered');
       }, error => {
         console.log(error);
+      }, () => {
+          this.authService.login(this.user).subscribe(() => {
+          this.router.navigate(['/dashboard']);
+        });
       });
     }
   }
-
 }
