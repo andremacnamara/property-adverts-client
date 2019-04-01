@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Services
+import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
 
@@ -49,8 +50,9 @@ export function tokenGetter() {
       })
    ],
    providers: [
+      AlertifyService,
+      AuthGuard,
       AuthService,
-      AlertifyService
    ],
    bootstrap: [
       AppComponent
