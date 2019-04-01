@@ -10,11 +10,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   })
 
   export class AuthService {
-    baseUrl = environment.apiUrl + 'api/auth/';
+    baseUrl = environment.apiUrl + 'auth/';
     user: User;
     jwtHelper = new JwtHelperService();
     decodedToken: any;
-    currentUser: User;
+    currentUser: any;
 
 
   constructor(private http: HttpClient) { }
@@ -31,7 +31,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
           localStorage.setItem('token', user.access_token);
           localStorage.setItem('user', JSON.stringify(user.user));
           this.decodedToken = this.jwtHelper.decodeToken(user.access_token);
-          this.currentUser = user.user;
+          this.currentUser = JSON.stringify(user.user);
         }
       })
     );

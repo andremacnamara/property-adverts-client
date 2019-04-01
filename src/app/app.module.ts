@@ -1,6 +1,8 @@
 import { appRoutes } from './routes';
 
 // Components
+import { AdvertComponent } from './advert/advert.component';
+import { AdvertPhotosComponent } from './advert-photos/advert-photos.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +13,8 @@ import { RegisterComponent } from './register/register.component';
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -22,8 +26,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
-import { AdvertComponent } from './advert/advert.component';
-
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -31,18 +33,20 @@ export function tokenGetter() {
 
 @NgModule({
    declarations: [
+      AdvertComponent,
+      AdvertPhotosComponent,
       AppComponent,
       NavComponent,
       RegisterComponent,
       LoginComponent,
       DashboardComponent,
       HomeComponent,
-      AdvertComponent
    ],
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
       HttpClientModule,
+      FileUploadModule,
       FormsModule,
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
@@ -52,7 +56,6 @@ export function tokenGetter() {
       MatInputModule,
       MatIconModule,
       MatStepperModule,
-
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,

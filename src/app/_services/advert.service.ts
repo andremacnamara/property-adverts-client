@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Property } from '../_models/property';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,11 @@ import { Property } from '../_models/property';
 export class AdvertService {
 
   baseUrl = environment.apiUrl + 'advertisement/';
+  propertyId: any;
 
   constructor(private http: HttpClient) { }
 
-  createAdvert(id: number, property: Property) {
+  createAdvert(property: Property) {
     return this.http.post(this.baseUrl + 'store', {property});
   }
 }
