@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { User } from '../_models/user';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from '../_services/Alertify.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   user: User;
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private alertify: AlertifyService, private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.createRegisterForm();
@@ -37,9 +38,9 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.value) {
       this.user = Object.assign({}, this.registerForm.value);
       this.authService.register(this.user).subscribe(() => {
-        console.log('Successfully Registered');
+        this.alertify.success('Successfully Registered');
       }, error => {
-        console.log(error);
+        this.alertify.error(error);
       }, () => {
           this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/dashboard']);
