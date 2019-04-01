@@ -1,0 +1,80 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step>
+      <form [formGroup]="advertForm" (ngSubmit)="submitAdvert()">
+          <ng-template matStepLabel>Enter Property Details</ng-template>
+  
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="town" placeholder="town">
+              <div class="invalid-feedback">Please select a town.</div>
+          </div>
+          
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="county" placeholder="County">
+              <div class="invalid-feedback">Please select a county.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="address" placeholder="address">
+              <div class="invalid-feedback">Please select a address.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="postcode" placeholder="postcode">
+              <div class="invalid-feedback">Please select a postcode.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="eircode" placeholder="eircode">
+              <div class="invalid-feedback">Please select a eircode.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="propertyType" placeholder="propertyType">
+              <div class="invalid-feedback">Please select a property type.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="sellingType" placeholder="sellingType">
+              <div class="invalid-feedback">Please select a sellingType.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="price" placeholder="price">
+              <div class="invalid-feedback">Please select a price.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="bedrooms" placeholder="bedrooms">
+              <div class="invalid-feedback">Please select a bedrooms.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="bathrooms" placeholder="bathrooms">
+              <div class="invalid-feedback">Please select a bathrooms.</div>
+          </div>
+      
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="size" placeholder="size">
+              <div class="invalid-feedback">Please select a size.</div>
+          </div>
+  
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="buildingEnergyRating" placeholder="buildingEnergyRating">
+              <div class="invalid-feedback">Please select a Building Energy Rating.</div>
+          </div>
+  
+          <div class="form-group">
+              <input type="text" class="form-control" formControlName="description" placeholder="description">
+              <div class="invalid-feedback">Please select a description.</div>
+          </div>
+          <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+          </div>
+      </form>
+  </mat-step>
+
+  <mat-step>
+      Content 2
+  </mat-step>
+</mat-horizontal-stepper>

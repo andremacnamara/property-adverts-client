@@ -16,6 +16,9 @@
             <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/advert/create']">Post Advert</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/']">Welcome {{this.authService.currentUser.username}}</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
