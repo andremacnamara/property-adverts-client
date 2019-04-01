@@ -10,16 +10,19 @@ import { RegisterComponent } from './register/register.component';
 
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule, MatStepperModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Services
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
+import { AdvertComponent } from './advert/advert.component';
 
 
 export function tokenGetter() {
@@ -33,14 +36,23 @@ export function tokenGetter() {
       RegisterComponent,
       LoginComponent,
       DashboardComponent,
-      HomeComponent
+      HomeComponent,
+      AdvertComponent
    ],
    imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
+      MatButtonModule,
+      MatCheckboxModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatIconModule,
+      MatStepperModule,
+
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,
