@@ -14,7 +14,7 @@ export class AdvertService {
 
   constructor(private http: HttpClient) { }
 
-  createAdvert(property: Property) {
-    return this.http.post(this.baseUrl + 'store', {property});
+  createAdvert(userId: number, property: Property) {
+    return this.http.post(this.baseUrl + userId + '/store', {property});
   }
 }

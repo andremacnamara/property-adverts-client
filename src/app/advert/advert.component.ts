@@ -58,7 +58,7 @@ export class AdvertComponent implements OnInit {
       this.property = (Object.assign({}, this.advertForm.value));
       console.log(this.authService.currentUser.id);
       this.property.user_id = this.authService.currentUser.id;
-      this.advertService.createAdvert(this.property).subscribe(data => {
+      this.advertService.createAdvert(this.authService.currentUser.id, this.property).subscribe(data => {
         this.alertify.success('Success');
         this.advertService.propertyId = data['id'];
       }, error => {
