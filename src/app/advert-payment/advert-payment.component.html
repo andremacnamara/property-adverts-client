@@ -1,0 +1,36 @@
+<form [formGroup]="advertPaymentForm" (ngSubmit)="submitPayment()">
+    <ng-template matStepLabel>Enter Card Details</ng-template>
+
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="billing_address" placeholder="Billing Address">
+      </div>
+      
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="town" placeholder="town">
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="county" placeholder="county">
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="cardnumber" placeholder="4111111111111111">
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="month" placeholder="05">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="year" placeholder="19">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="cvv" placeholder="cvv">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="county" placeholder="county">
+  </div>
+  <button mat-button matStepperNext>Next</button>
+</form>

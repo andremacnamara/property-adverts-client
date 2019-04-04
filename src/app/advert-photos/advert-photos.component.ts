@@ -26,19 +26,26 @@ export class AdvertPhotosComponent implements OnInit {
     this.initializeUploader();
   }
 
+
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
 
   initializeUploader() {
+    const currentProperty = JSON.parse(localStorage.getItem('property'));
+
     this.uploader = new FileUploader({
-      url: this.baseUrl + this.authService.decodedToken.nameid + '/advert/' + this.advertService.propertyId + 'photos',
+      url: this.baseUrl + 'advertisement/' + currentProperty.id + '/upload-image',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image'],
       removeAfterUpload: true,
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
+    });
+
+    this.uploader.onAfterAddingFile = (item => {
+      item.withCredentials = false;
     });
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {

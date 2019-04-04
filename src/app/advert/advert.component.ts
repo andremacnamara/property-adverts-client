@@ -8,6 +8,7 @@ import { User } from '../_models/user';
 import { AuthService } from '../_services/auth.service';
 import { FileUploader } from 'ng2-file-upload';
 import { AdvertPhotosComponent } from '../advert-photos/advert-photos.component';
+import { AdvertPaymentComponent } from '../advert-payment/advert-payment.component';
 
 @Component({
   selector: 'app-advert',
@@ -15,7 +16,7 @@ import { AdvertPhotosComponent } from '../advert-photos/advert-photos.component'
   styleUrls: ['./advert.component.css']
 })
 export class AdvertComponent implements OnInit {
-  @ViewChild('advertPhotos') advertPhotos: AdvertPhotosComponent;
+  @ViewChild('advertPhotos') advertPhotos: AdvertPaymentComponent;
 
   property: Property;
   photo: Photo;
@@ -54,16 +55,22 @@ export class AdvertComponent implements OnInit {
   submitAdvert() {
     // console.log(JSON.stringify(this.authService.user));
 
-    if (this.advertForm.value) {
-      this.property = (Object.assign({}, this.advertForm.value));
-      console.log(this.authService.currentUser.id);
-      this.property.user_id = this.authService.currentUser.id;
-      this.advertService.createAdvert(this.authService.currentUser.id, this.property).subscribe(data => {
-        this.alertify.success('Success');
-        this.advertService.propertyId = data['id'];
-      }, error => {
-        this.alertify.error(error);
-      });
-    }
+      const user = this.authService.currentUser;
+      console.log(user);
+      console.log(user.id);
+      // if (typeof user_id !== 'undefined') {
+      //   if (this.advertForm.value) {
+      //     this.property = (Object.assign({}, this.advertForm.value));
+      //     this.property.user_id = user_id;
+      //     this.advertService.createAdvert(user_id, this.property).subscribe(data => {
+      //       this.alertify.success('Success');
+      //       this.advertService.propertyId = data['id'];
+      //     }, error => {
+      //       this.alertify.error(error);
+      //     });
+      //   }
+      // } else {
+      //   this.alertify.error('Server error. Please try again');
+      // }
   }
 }

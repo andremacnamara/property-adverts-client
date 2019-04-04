@@ -2,6 +2,7 @@ import { appRoutes } from './routes';
 
 // Components
 import { AdvertComponent } from './advert/advert.component';
+import { AdvertPaymentComponent } from './advert-payment/advert-payment.component';
 import { AdvertPhotosComponent } from './advert-photos/advert-photos.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -34,6 +35,7 @@ export function tokenGetter() {
 @NgModule({
    declarations: [
       AdvertComponent,
+      AdvertPaymentComponent,
       AdvertPhotosComponent,
       AppComponent,
       NavComponent,

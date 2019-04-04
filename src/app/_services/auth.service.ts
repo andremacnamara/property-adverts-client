@@ -31,7 +31,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
           localStorage.setItem('token', user.access_token);
           localStorage.setItem('user', JSON.stringify(user.user));
           this.decodedToken = this.jwtHelper.decodeToken(user.access_token);
-          this.currentUser = JSON.stringify(user.user);
+          this.currentUser = user.user;
         }
       })
     );
