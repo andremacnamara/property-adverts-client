@@ -5,6 +5,8 @@ import { Property } from '../_models/property';
 import { User } from '../_models/user';
 import { Payment } from '../_models/payment';
 import { map } from 'rxjs/operators';
+import { Photo } from '../_models/photo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class AdvertService {
 
   baseUrl = environment.apiUrl + 'advertisement/';
   currentProperty: any;
+ 
 
   constructor(private http: HttpClient) { }
 
@@ -27,4 +30,9 @@ export class AdvertService {
   createAdvertPayment(propertyId: number, payment: Payment) {
     return this.http.post(this.baseUrl + propertyId + '/payment', {payment});
   }
+
+  createAdvertPhoto(propertyId: number,  uploadData = new FormData()) {
+    return this.http.post(this.baseUrl + propertyId + '/upload-image', uploadData);
+  }
+
 }

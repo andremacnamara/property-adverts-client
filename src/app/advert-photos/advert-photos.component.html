@@ -1,4 +1,12 @@
-<div class="row">
+<form (ngSubmit)="onUpload()">
+    <ng-template matStepLabel>Choose Photo</ng-template>
+    <input type="file" (change)="onFileChanged($event)">
+
+<button mat-button matStepperNext>Next</button>
+
+</form>
+
+<!-- <div class="row">
     <div class="row mt-3">
         <div class="col-md-3">
             
@@ -49,7 +57,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-success btn-s"
+                <button mat-button matStepperNext type="button" class="btn btn-success btn-s"
                         (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                         <span class="fa fa-upload"></span> Upload
                 </button>
@@ -66,4 +74,4 @@
         </div>
     </div>
 </div>
-<button mat-button matStepperNext>Next</button>
+<button mat-button matStepperNext>Next</button> -->

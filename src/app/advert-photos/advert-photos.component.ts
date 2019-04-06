@@ -6,58 +6,44 @@ import { AdvertService } from '../_services/advert.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 import { Photo } from '../_models/photo';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-advert-photos',
   templateUrl: './advert-photos.component.html',
   styleUrls: ['./advert-photos.component.css']
 })
+
 export class AdvertPhotosComponent implements OnInit {
-  @Input() photos: Photo[];
 
-  uploader: FileUploader;
-  hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
+  selectedFile: File;
 
-  constructor(private advertService: AdvertService, private alertify: AlertifyService, public authService: AuthService,
+  constructor(private http: HttpClient, private advertService: AdvertService, 
+    private alertify: AlertifyService, public authService: AuthService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.initializeUploader();
+
   }
 
-
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
   }
 
-  initializeUploader() {
-    const currentProperty = JSON.parse(localStorage.getItem('property'));
+  onUpload() {
+    const currentProperty = localStorage.getItem('property');
+    const propertyId = JSON.parse(currentProperty)['id'];
 
-    this.uploader = new FileUploader({
-      url: this.baseUrl + 'advertisement/' + currentProperty.id + '/upload-image',
-      authToken: 'Bearer ' + localStorage.getItem('token'),
-      isHTML5: true,
-      allowedFileType: ['image'],
-      removeAfterUpload: true,
-      autoUpload: false,
-      maxFileSize: 10 * 1024 * 1024
-    });
+    const uploadData = new FormData();
+    uploadData.append('image_name', this.selectedFile, this.selectedFile.name);
 
-    this.uploader.onAfterAddingFile = (item => {
-      item.withCredentials = false;
-    });
-
-    this.uploader.onSuccessItem = (item, response, status, headers) => {
-      if (response) {
-        const res: Photo = JSON.parse(response);
-        const photo = {
-          id: res.id,
-          url: res.url,
-          isMain: res.isMain,
-        };
-        this.photos.push(photo);
-      }
-    };
+    this.advertService.createAdvertPhoto(propertyId, uploadData)
+      .subscribe(data => {
+            this.alertify.success('Success');
+          }, error => {
+            this.alertify.error(error);
+          });
   }
+
 }
