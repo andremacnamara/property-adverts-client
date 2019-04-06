@@ -14,7 +14,7 @@ import { Payment } from '../_models/payment';
 export class AdvertPaymentComponent implements OnInit {
   advertPaymentForm: FormGroup;
   model: any;
-  payment: Payment;
+  payment: Payment;g
   constructor(private advertService: AdvertService, private alertify: AlertifyService, public authService: AuthService,
     private formBuilder: FormBuilder) { }
 
@@ -35,14 +35,21 @@ export class AdvertPaymentComponent implements OnInit {
   }
 
   submitPayment() {
-    if (this.advertPaymentForm.value) {
-      this.payment = (Object.assign({}, this.advertPaymentForm.value));
-      console.log(this.payment);
-      this.advertService.createAdvertPayment(2, this.payment).subscribe(data => {
-        this.alertify.success('Success');
-      }, error => {
-        this.alertify.error(error);
-      });
+    const currentProperty = localStorage.getItem('property');
+    const propertyId = JSON.parse(currentProperty)['id'];
+
+    if (propertyId !== 'undefinded') {
+      if (this.advertPaymentForm.value) {
+        this.payment = (Object.assign({}, this.advertPaymentForm.value));
+        console.log(this.payment);
+        this.advertService.createAdvertPayment(propertyId, this.payment).subscribe(data => {
+          this.alertify.success('Success');
+        }, error => {
+          this.alertify.error(error);
+        });
+      }
+    } else {
+      this.alertify.error('No Property Specified');
     }
   }
 

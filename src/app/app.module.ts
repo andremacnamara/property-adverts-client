@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
+import { AdvertService } from './_services/advert.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -70,6 +71,8 @@ export function tokenGetter() {
       AlertifyService,
       AuthGuard,
       AuthService,
+      AdvertService
+
    ],
    bootstrap: [
       AppComponent

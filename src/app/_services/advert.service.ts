@@ -12,17 +12,14 @@ import { map } from 'rxjs/operators';
 export class AdvertService {
 
   baseUrl = environment.apiUrl + 'advertisement/';
-  propertyId: any;
+  currentProperty: any;
 
   constructor(private http: HttpClient) { }
 
   createAdvert(userId: number, property: Property) {
     return this.http.post(this.baseUrl + userId + '/store', {property}).pipe(
       map((response: any) => {
-        const data = response;
-        if (data) {
-          localStorage.setItem('property', JSON.stringify(data.property));
-        }
+        localStorage.setItem('property', JSON.stringify(response));
       })
     );
   }

@@ -54,23 +54,21 @@ export class AdvertComponent implements OnInit {
 
   submitAdvert() {
     // console.log(JSON.stringify(this.authService.user));
-
       const user = this.authService.currentUser;
-      console.log(user);
-      console.log(user.id);
-      // if (typeof user_id !== 'undefined') {
-      //   if (this.advertForm.value) {
-      //     this.property = (Object.assign({}, this.advertForm.value));
-      //     this.property.user_id = user_id;
-      //     this.advertService.createAdvert(user_id, this.property).subscribe(data => {
-      //       this.alertify.success('Success');
-      //       this.advertService.propertyId = data['id'];
-      //     }, error => {
-      //       this.alertify.error(error);
-      //     });
-      //   }
-      // } else {
-      //   this.alertify.error('Server error. Please try again');
-      // }
+      // console.log(user);
+      // console.log(user.id);
+      if (typeof user !== 'undefined') {
+        if (this.advertForm.value) {
+          this.property = (Object.assign({}, this.advertForm.value));
+          this.property.user_id = user.id;
+          this.advertService.createAdvert(user.id, this.property).subscribe(data => {
+            this.alertify.success('Success');
+          }, error => {
+            this.alertify.error(error);
+          });
+        }
+      } else {
+        this.alertify.error('Server error. Please try again');
+      }
   }
 }

@@ -1,5 +1,5 @@
 export interface Property {
-    id?: number;
+    id: number;
     town?: string;
     county?: string;
     address: string;
