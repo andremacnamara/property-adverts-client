@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class AdvertService {
 
-  baseUrl = environment.apiUrl + 'advertisement/';
+  baseUrl = environment.apiUrl + 'property/';
   currentProperty: any;
  
 
@@ -33,6 +33,10 @@ export class AdvertService {
 
   createAdvertPhoto(propertyId: number,  uploadData = new FormData()) {
     return this.http.post(this.baseUrl + propertyId + '/upload-image', uploadData);
+  }
+
+  getAllProperties(userId: number) {
+    return this.http.get(this.baseUrl + userId + '/all');
   }
 
 }

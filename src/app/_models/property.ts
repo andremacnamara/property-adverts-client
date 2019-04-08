@@ -1,3 +1,5 @@
+import { Photo } from './photo';
+
 export interface Property {
     id: number;
     town?: string;
@@ -14,4 +16,6 @@ export interface Property {
     building_energy_rating: string;
     description: string;
     user_id: number;
+    mainPhotoUrl: string;
+    photos: Photo[];
 }
