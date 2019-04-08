@@ -1,3 +1,29 @@
-<p>
-    {{property?.address}}
-</p>
+<div class="container mt-4">
+
+    <div class="card mb-3">
+        <img class="card-img-top" src="{{property?.mainPhotoUrl}}" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">€ {{property?.price}}</h4>
+            <h5 class="card-title">{{property?.address}}, {{property?.town}}, {{property?.county}}, {{property?.postcode}}, {{property?.eircode}}</h5>
+            <p class="card-text">{{property?.bedrooms}} <i class="fa fa-bed"></i> <strong> | </strong>{{property?.bathrooms}} <i class="fa fa-bath"></i></p>
+            <hr>
+            <h5 class="card-title">Property Overview</h5>
+            <p class="card-text"><strong>Floor Area:</strong> {{property?.size}} sqft</p>
+            <p class="card-text"><strong>BER:</strong> {{property?.building_energy_rating}}</p>
+            <p class="card-text"><strong>Property Type:</strong> {{property?.property_type}}</p>
+            <p class="card-text"><strong>Sale Type:</strong> {{property?.selling_type}}</p>
+            <hr>
+            <h5 class="card-title">Property Overview</h5>
+            <p class="card-text">{{property?.description}}</p>
+            <hr>
+            <h5 class="card-title">Property Statisitcs</h5>
+            
+            <p>
+                <i class="fa fa-calendar fa-2x" aria-hidden="true"></i> Date Published
+            </p>
+            <p class="card-text">{{property?.created_at | date}}</p>
+
+        </div>
+    </div> 
+    
+</div>

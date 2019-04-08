@@ -5,7 +5,7 @@ export interface Property {
     town?: string;
     county?: string;
     address: string;
-    postocde: string;
+    postcode: string;
     eircode: string;
     property_type: string;
     selling_type: string;
@@ -17,5 +17,6 @@ export interface Property {
     description: string;
     user_id: number;
     mainPhotoUrl: string;
+    created_at: Date;
     photos: Photo[];
 }
