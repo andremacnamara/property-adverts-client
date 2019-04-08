@@ -15,7 +15,6 @@ export class AdvertService {
 
   baseUrl = environment.apiUrl + 'property/';
   currentProperty: any;
- 
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +36,10 @@ export class AdvertService {
 
   getAllProperties(userId: number) {
     return this.http.get(this.baseUrl + userId + '/all');
+  }
+
+  getProperty(id: number): Observable<Property> {
+    return this.http.get<Property>(this.baseUrl + id + '/show');
   }
 
 }

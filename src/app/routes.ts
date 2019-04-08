@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AdvertComponent } from './advert/advert.component';
 import { AdvertPhotosComponent } from './advert-photos/advert-photos.component';
+import { PropertyShowComponent } from './property-show/property-show.component';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -14,4 +15,5 @@ export const appRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     { path: 'advert/create', component: AdvertComponent, canActivate: [AuthGuard]},
     { path: 'photo', component: AdvertPhotosComponent, canActivate: [AuthGuard]},
+    { path: 'property/show/:id', component: PropertyShowComponent},
 ];
