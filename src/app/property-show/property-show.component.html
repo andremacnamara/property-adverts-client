@@ -1,29 +1,62 @@
 <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <img class="card-img-top" src="{{property?.mainPhotoUrl}}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">€ {{property?.price}}</h4>
+                    <h5 class="card-title">{{property?.address}}, {{property?.town}}, {{property?.county}}, {{property?.postcode}}, {{property?.eircode}}</h5>
+                    <p class="card-text">{{property?.bedrooms}} <i class="fa fa-bed"></i> <strong> | </strong>{{property?.bathrooms}} <i class="fa fa-bath"></i></p>
+                    <hr>
+                    <h5 class="card-title">Property Overview</h5>
+                    <p class="card-text"><strong>Floor Area:</strong> {{property?.size}} sqft</p>
+                    <p class="card-text"><strong>BER:</strong> {{property?.building_energy_rating}}</p>
+                    <p class="card-text"><strong>Property Type:</strong> {{property?.property_type}}</p>
+                    <p class="card-text"><strong>Sale Type:</strong> {{property?.selling_type}}</p>
+                    <hr>
+                    <h5 class="card-title">Property Overview</h5>
+                    <p class="card-text">{{property?.description}}</p>
+                    <hr>
+                    <h5 class="card-title">Property Statisitcs</h5>
+                    
+                    <p>
+                        <i class="fa fa-calendar fa-2x" aria-hidden="true"></i> Date Published
+                    </p>
+                    <p class="card-text">{{property?.created_at | date}}</p>
 
-    <div class="card mb-3">
-        <img class="card-img-top" src="{{property?.mainPhotoUrl}}" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">€ {{property?.price}}</h4>
-            <h5 class="card-title">{{property?.address}}, {{property?.town}}, {{property?.county}}, {{property?.postcode}}, {{property?.eircode}}</h5>
-            <p class="card-text">{{property?.bedrooms}} <i class="fa fa-bed"></i> <strong> | </strong>{{property?.bathrooms}} <i class="fa fa-bath"></i></p>
-            <hr>
-            <h5 class="card-title">Property Overview</h5>
-            <p class="card-text"><strong>Floor Area:</strong> {{property?.size}} sqft</p>
-            <p class="card-text"><strong>BER:</strong> {{property?.building_energy_rating}}</p>
-            <p class="card-text"><strong>Property Type:</strong> {{property?.property_type}}</p>
-            <p class="card-text"><strong>Sale Type:</strong> {{property?.selling_type}}</p>
-            <hr>
-            <h5 class="card-title">Property Overview</h5>
-            <p class="card-text">{{property?.description}}</p>
-            <hr>
-            <h5 class="card-title">Property Statisitcs</h5>
-            
-            <p>
-                <i class="fa fa-calendar fa-2x" aria-hidden="true"></i> Date Published
-            </p>
-            <p class="card-text">{{property?.created_at | date}}</p>
-
+                </div>
+            </div> 
         </div>
-    </div> 
+
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <h4 class="card-title text-center mt-2">Seller Contact Information</h4>
+                <hr>
+
+                <div class="form-group text-center">
+                        <p class="card-text">Andre MacNamara</p>
+                        <p class="card-text">Self Sale</p>
+                </div>
+
+                <form >
+                    <div class="form-group text-center">
+                        <input type="text" class="form-control mt-4" placeholder="Full name">
+                        <input type="text" class="form-control mt-4" placeholder="Email">
+                        <input type="text" class="form-control mt-4" placeholder="Phone Number">
+                        <input type="text" class="form-control mt-4 mb-4" placeholder="Message">
+                        <button type="submit" class="btn btn-primary email-button btn-lg btn-block">Email Seller</button>
+                    </div>
+                </form>
+
+                <div class="form-group text-center mt-4">
+                    <a href="tel:+01234567">
+                        <button class="btn btn-lg btn-outline-primary email-button btn-block">+01 333 4432</button>
+                    </a>
+                </div>
+
+                <hr>
+            </div> 
+        </div>
+    </div>
     
 </div>
