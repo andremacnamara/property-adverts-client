@@ -42,4 +42,7 @@ export class AdvertService {
     return this.http.get<Property>(this.baseUrl + id + '/show');
   }
 
+  sendEmail(sellerId: number, model: any) {
+    return this.http.post(this.baseUrl + sellerId + '/mail', model);
+  }
 }

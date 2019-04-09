@@ -34,16 +34,16 @@
                 <hr>
 
                 <div class="form-group text-center">
-                        <p class="card-text">Andre MacNamara</p>
+                        <p class="card-text">{{user?.username}}</p>
                         <p class="card-text">Self Sale</p>
                 </div>
 
-                <form >
+                <form [formGroup]="mailForm" (ngSubmit)="submitEmail()">
                     <div class="form-group text-center">
-                        <input type="text" class="form-control mt-4" placeholder="Full name">
-                        <input type="text" class="form-control mt-4" placeholder="Email">
-                        <input type="text" class="form-control mt-4" placeholder="Phone Number">
-                        <input type="text" class="form-control mt-4 mb-4" placeholder="Message">
+                        <input type="text" class="form-control mt-4" formControlName="name" placeholder="Full name">
+                        <input type="text" class="form-control mt-4" formControlName="email" placeholder="Email">
+                        <input type="text" class="form-control mt-4" formControlName="number" placeholder="Phone Number">
+                        <input type="text" class="form-control mt-4 mb-4" formControlName="message" placeholder="Message">
                         <button type="submit" class="btn btn-primary email-button btn-lg btn-block">Email Seller</button>
                     </div>
                 </form>

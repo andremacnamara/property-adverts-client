@@ -1,4 +1,5 @@
 import { Photo } from './photo';
+import { User } from './user';
 
 export interface Property {
     id: number;
@@ -19,4 +20,5 @@ export interface Property {
     mainPhotoUrl: string;
     created_at: Date;
     photos: Photo[];
+    user: User;
 }
