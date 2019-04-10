@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AdvertComponent } from './advert/advert.component';
 import { AdvertPhotosComponent } from './advert-photos/advert-photos.component';
 import { PropertyShowComponent } from './property-show/property-show.component';
+import { PropertySearchComponent } from './property-search/property-search.component';
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent},
@@ -16,4 +17,6 @@ export const appRoutes: Routes = [
     { path: 'advert/create', component: AdvertComponent, canActivate: [AuthGuard]},
     { path: 'photo', component: AdvertPhotosComponent, canActivate: [AuthGuard]},
     { path: 'property/show/:id', component: PropertyShowComponent},
+    { path: 'property/search', component: PropertySearchComponent},
+
 ];
