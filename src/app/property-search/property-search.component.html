@@ -1,3 +1,140 @@
-<p>
-  property-search works!
-</p>
+<div class="container mt-4">
+  <div class="card">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <div class="card-header">Search for a Property</div>
+        <div class="card-body">
+
+          <!-- County and Town Label-->
+          <div class="row">
+            <div class="col-md-6">
+              <label class="ml-1" for="county">County</label>
+            </div>
+            <div class="col-md-6">
+              <label for="town">Town</label>
+            </div>
+          </div>
+
+          <div class="row">
+          <!-- County Column -->
+            <div class="col-md-6">
+              <select class ="form-control" id="county" formControlName="county" >
+                <option *ngFor="let county of counties" [value]="county.value">
+                  {{county.display}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" formControlName="town">
+                <option *ngFor="let town of towns" [value]="town.value">
+                  {{town.display}}
+                </option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Bed and Bath Label-->
+          <div class="row mt-md-4">
+            <div class="col-md-3">
+              <label class="ml-1" for="min-bedrooms">Min Bed</label>
+            </div>
+            <div class="col-md-3">
+              <label for="max-bedrooms">Max Bed</label>
+            </div>
+            <div class="col-md-3">
+              <label class="ml-1" for="min-bathrooms">Min Bath</label>
+            </div>
+            <div class="col-md-3">
+              <label for="max-bathrooms">Max Bath</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <select class="form-control" formControlName="min_bedrooms">
+                <option *ngFor="let room of rooms" [value]="room.value">
+                  {{room.display}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" formControlName="max_bedrooms">
+                <option *ngFor="let room of rooms" [value]="room.value">
+                  {{room.display}}
+                </option>
+              </select>
+            </div>
+
+              <div class="col-md-3">
+                <select class="form-control" formControlName="min_bathrooms">
+                <option *ngFor="let room of rooms" [value]="room.value">
+                  {{room.display}}
+                </option>
+              </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-control" formControlName="min_bathrooms">
+                <option *ngFor="let room of rooms" [value]="room.value">
+                  {{room.display}}
+                </option>
+              </select>
+              </div>
+            </div> 
+
+            <div class="row mt-md-4">
+              <div class="col-md-3">
+                <label class="ml-1" for="min-rent">Min Price</label>
+              </div>
+              <div class="col-md-3">
+                <label for="max-rent">Max Price</label>
+              </div>
+              <div class="col-md-3">
+                <label class="ml-1" for="type">Selling Type</label>
+              </div>
+              <div class="col-md-3">
+                <label class="ml-1" for="type">Property Type</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <select class="form-control" formControlName="min_price">
+                <option *ngFor="let price of prices" [value]="price.value">
+                  {{price.display}}
+                </option>
+              </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-control" formControlName="max_price">
+                <option *ngFor="let price of prices" [value]="price.value">
+                  {{price.display}}
+                </option>
+              </select>
+              </div>
+
+              <div class="col-md-3">
+                <select class="form-control" formControlName="selling_type">
+                <option *ngFor="let type of sellingTypes" [value]="type.value">
+                  {{type.display}}
+                </option>
+              </select>
+              </div>
+              
+              <div class="col-md-3">
+                <select class="form-control" formControlName="property_type">
+                <option *ngFor="let type of propertytypes" [value]="type.value">
+                  {{type.display}}
+                </option>
+              </select>
+              </div>
+            </div>
+            <div class="row mt-md-4">
+                <div class="col-md-4">
+                    <button type="submit" class="form-control btn btn-primary">
+                        Search
+                    </button>
+                </div>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>

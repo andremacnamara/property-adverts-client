@@ -45,4 +45,8 @@ export class AdvertService {
   sendEmail(sellerId: number, model: any) {
     return this.http.post(this.baseUrl + sellerId + '/mail', model);
   }
+
+  propertySearch(model: any): Observable<Property> {
+    return this.http.post<Property>(environment.apiUrl + 'search', model);
+  }
 }
