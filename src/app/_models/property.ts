@@ -2,6 +2,7 @@ import { Photo } from './photo';
 import { User } from './user';
 
 export interface Property {
+
     id: number;
     town?: string;
     county?: string;
@@ -21,4 +22,6 @@ export interface Property {
     created_at: Date;
     photos: Photo[];
     user: User;
+
+    forEach(arg0: (element: any) => void);
 }

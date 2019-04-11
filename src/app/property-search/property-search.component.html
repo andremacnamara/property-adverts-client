@@ -137,4 +137,37 @@
           </div>
       </form>
     </div>
-  </div>
+    <div *ngIf="properties">
+      <h1>Property Results</h1>
+      <div *ngFor="let property of properties">
+        <div class="card mb-md-4">
+          <div class="card-header"><h5><a href="#">{{property.address}}, {{property.town}}, {{property.county}}</a><h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <p>Bedrooms : {{property.bedrooms}}</p>
+                </div>
+                <div class="col-md-3">
+                  <p>Bathrooms : {{property.bathrooms}}</p>
+                </div>
+                <div class="col-md-3">
+                  <p>Rent : €{{property.price}}</p>
+                </div>
+                <div class="col-md-3">
+                  {{property.created_at}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+    
+                  <div class="img-wrapper">
+                    <img class="result-image" src="{{property.mainPhotoUrl}}">
+                   
+                  </div>
+                </div>
+    
+              <div class="col-md-8">
+                 <p>{{property.description}}<p>
+              </div>
+          </div>
+        </div>

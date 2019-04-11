@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
   getAllProperties() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.advertService.getAllProperties(user.id).subscribe((properties: Property[]) => {
-      // console.log(properties[0].photos['url']);
       properties.forEach(property => {
         if (property.photos) {
           property.mainPhotoUrl =  property.photos['url'];

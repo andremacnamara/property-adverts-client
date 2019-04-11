@@ -29,7 +29,7 @@ export class PropertySearchComponent implements OnInit {
 
   searchForm: FormGroup;
   searchParams: any = {};
-  property: Property;
+  properties: Property;
 
   constructor(private advertService: AdvertService, private alertify: AlertifyService, private formBuilder: FormBuilder) { }
 
@@ -55,10 +55,17 @@ export class PropertySearchComponent implements OnInit {
   search() {
     this.searchParams.county = (Object.assign({}, this.searchForm.value));
     this.advertService.propertySearch(this.searchParams).subscribe(data => {
-      this.property = data;
-      console.log(this.property);
+      this.properties = data;
+
+      this.properties.forEach(property => {
+        if (property.photos) {
+          property.mainPhotoUrl =  property.photos['url'];
+          console.log(property.mainPhotoUrl);
+        }
+      });
+      console.log(this.properties);
     }, error => {
       console.log(error);
-    })
+    });
   }
 }
