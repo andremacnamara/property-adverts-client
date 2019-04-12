@@ -53,7 +53,13 @@ export class PropertySearchComponent implements OnInit {
   }
 
   search() {
-    this.searchParams.county = (Object.assign({}, this.searchForm.value));
+    this.searchParams = (Object.assign({}, this.searchForm.value));
+
+    const obj = Object.assign({}, this.searchForm.value);
+    Object.keys(obj).forEach(key => obj[key] === undefined || obj[key] === '' ? delete obj[key] : '');
+    this.searchParams = obj;
+    console.log(this.searchParams);
+
     this.advertService.propertySearch(this.searchParams).subscribe(data => {
       this.properties = data;
 
