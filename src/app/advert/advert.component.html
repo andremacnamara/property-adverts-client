@@ -29,13 +29,21 @@
             </div>
         
             <div class="form-group">
-                <input type="text" class="form-control" formControlName="property_type" placeholder="propertyType">
-                <div class="invalid-feedback">Please select a property type.</div>
+                 <select class="form-control" formControlName="property_type">
+                    <option value="" disabled>Please select the property type</option>
+                    <option *ngFor="let type of propertytypes" [value]="type.value">
+                        {{type.display}}
+                    </option>
+                </select>
             </div>
         
             <div class="form-group">
-                <input type="text" class="form-control" formControlName="selling_type" placeholder="sellingType">
-                <div class="invalid-feedback">Please select a sellingType.</div>
+                <select class="form-control" formControlName="selling_type">
+                    <option value="" disabled>Please select the advert type.</option>
+                    <option *ngFor="let type of sellingTypes" [value]="type.value">
+                        {{type.display}}
+                    </option>
+                </select>
             </div>
         
             <div class="form-group">
@@ -44,13 +52,21 @@
             </div>
         
             <div class="form-group">
-                <input type="text" class="form-control" formControlName="bedrooms" placeholder="bedrooms">
-                <div class="invalid-feedback">Please select a bedrooms.</div>
+                <select class="form-control" formControlName="bedrooms">
+                    <option value="" disabled>Please select the number of bathrooms</option>
+                    <option *ngFor="let room of rooms" [value]="room.value">
+                        {{room.display}}
+                    </option>
+                </select>
             </div>
-        
+
             <div class="form-group">
-                <input type="text" class="form-control" formControlName="bathrooms" placeholder="bathrooms">
-                <div class="invalid-feedback">Please select a bathrooms.</div>
+                <select class="form-control" formControlName="bathrooms">
+                    <option value="" disabled>Please select the number of bathrooms</option>
+                    <option *ngFor="let room of rooms" [value]="room.value">
+                        {{room.display}}
+                    </option>
+                </select>
             </div>
         
             <div class="form-group">
@@ -59,8 +75,12 @@
             </div>
     
             <div class="form-group">
-                <input type="text" class="form-control" formControlName="building_energy_rating" placeholder="buildingEnergyRating">
-                <div class="invalid-feedback">Please select a Building Energy Rating.</div>
+                <select class="form-control" formControlName="building_energy_rating">
+                    <option value="" disabled>Please Choose a BER Option</option>
+                    <option *ngFor="let ber of bers" [value]="ber.value">
+                        {{ber.display}}
+                    </option>
+                </select>
             </div>
     
             <div class="form-group">
