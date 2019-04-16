@@ -33,7 +33,6 @@ export class PropertyShowComponent implements OnInit {
     this.advertService.getProperty(+this.route.snapshot.params['id']).subscribe((property: Property) => {
       this.property = property;
       this.user = property.user;
-      console.log('USER' + property.user);
       if (property.photos) {
         property.mainPhotoUrl =  property.photos['url'];
       }
