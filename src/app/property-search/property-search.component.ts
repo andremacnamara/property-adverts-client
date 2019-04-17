@@ -52,6 +52,10 @@ export class PropertySearchComponent implements OnInit {
     });
   }
 
+  resetFilters() {
+    console.log('R');
+  }
+
   search() {
     this.searchParams = (Object.assign({}, this.searchForm.value));
 
