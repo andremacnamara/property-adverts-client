@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AdvertService } from '../_services/advert.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Property } from '../_models/property';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-property-search',
@@ -31,7 +32,8 @@ export class PropertySearchComponent implements OnInit {
   searchParams: any = {};
   properties: Property;
 
-  constructor(private advertService: AdvertService, private alertify: AlertifyService, private formBuilder: FormBuilder) { }
+  constructor(private advertService: AdvertService, private alertify: AlertifyService, private authService: AuthService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createSearchForm();
@@ -58,6 +60,8 @@ export class PropertySearchComponent implements OnInit {
   }
 
   search() {
+    const user = this.authService.currentUser;
+
     this.searchParams = (Object.assign({}, this.searchForm.value));
 
     const obj = Object.assign({}, this.searchForm.value);
@@ -71,12 +75,27 @@ export class PropertySearchComponent implements OnInit {
       this.properties.forEach(property => {
         if (property.photos) {
           property.mainPhotoUrl =  property.photos['url'];
-          console.log(property.mainPhotoUrl);
         }
+
+        if (property.stars) {
+        // Loop through each property and checked is it starred by this user.
+        // if (property.stars.user_id === user.id) {
+        //   console.log('Starred by user');
+        // }
+      }
       });
-      console.log(this.properties);
     }, error => {
       console.log(error);
     });
   }
+
+  sendLike(id: number) {
+    const user = this.authService.currentUser;
+    this.advertService.sendLike(id, user.id).subscribe(data => {
+      this.alertify.success('You have starred this property');
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
 }
+

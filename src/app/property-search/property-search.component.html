@@ -153,8 +153,11 @@
               <div class="row">
                 <div class="col-md-4">
     
-                  <div class="img-wrapper">
+                  <div class="card-img-wrapper">
                     <img class="result-image" src="{{property.mainPhotoUrl}}">
+                    <ul class="list-inline member-icons animate text-center">
+                        <li class="list-inline-item"><button class="btn btn-primary" (click)="sendLike(property.id)"><i class="fa fa-heart"></i></button></li>
+                      </ul>
                   </div>
                   <p class="stats mt-4">{{property.bedrooms}} <i class="fa fa-bed"></i> <strong> | </strong>{{property.bathrooms}} <i class="fa fa-bath"></i></p>
                   <p>€{{property.price}}</p>

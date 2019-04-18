@@ -74,10 +74,7 @@ export class AdvertComponent implements OnInit {
   }
 
   submitAdvert() {
-    // console.log(JSON.stringify(this.authService.user));
       const user = this.authService.currentUser;
-      // console.log(user);
-      // console.log(user.id);
       if (typeof user !== 'undefined') {
         if (this.advertForm.value) {
           this.property = (Object.assign({}, this.advertForm.value));

@@ -1,5 +1,6 @@
 import { Photo } from './photo';
 import { User } from './user';
+import { Star } from './star';
 
 export interface Property {
 
@@ -22,6 +23,7 @@ export interface Property {
     created_at: Date;
     photos: Photo[];
     user: User;
+    stars: Star[];
 
     forEach(arg0: (element: any) => void);
 }

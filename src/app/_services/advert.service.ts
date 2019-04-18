@@ -49,4 +49,8 @@ export class AdvertService {
   propertySearch(model: any): Observable<Property> {
     return this.http.post<Property>(environment.apiUrl + 'search', model);
   }
+
+  sendLike(propertyId: number, userId: number) {
+    return this.http.post(this.baseUrl + 'star/' + propertyId + '/' + userId, {});
+  }
 }
