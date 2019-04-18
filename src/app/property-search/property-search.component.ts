@@ -53,14 +53,15 @@ export class PropertySearchComponent implements OnInit {
   }
 
   resetFilters() {
-    console.log('R');
+    this.searchForm.reset();
+    this.properties = null;
   }
 
   search() {
     this.searchParams = (Object.assign({}, this.searchForm.value));
 
     const obj = Object.assign({}, this.searchForm.value);
-    Object.keys(obj).forEach(key => obj[key] === undefined || obj[key] === '' ? delete obj[key] : '');
+    Object.keys(obj).forEach(key => obj[key] === undefined || obj[key] === null ||  obj[key] === '' ? delete obj[key] : '');
     this.searchParams = obj;
     console.log(this.searchParams);
 
