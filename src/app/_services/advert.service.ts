@@ -53,4 +53,8 @@ export class AdvertService {
   sendLike(propertyId: number, userId: number) {
     return this.http.post(this.baseUrl + 'star/' + propertyId + '/' + userId, {});
   }
+
+  unlike(propertyId: number, userId: number) {
+    return this.http.delete(this.baseUrl + 'unstar/' + propertyId + '/' + userId, {});
+  }
 }

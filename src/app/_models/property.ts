@@ -20,6 +20,7 @@ export interface Property {
     description: string;
     user_id: number;
     mainPhotoUrl: string;
+    starred: boolean;
     created_at: Date;
     photos: Photo[];
     user: User;

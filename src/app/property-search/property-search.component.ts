@@ -73,15 +73,18 @@ export class PropertySearchComponent implements OnInit {
       this.properties = data;
 
       this.properties.forEach(property => {
+        property.starred = false;
+
         if (property.photos) {
           property.mainPhotoUrl =  property.photos['url'];
         }
 
         if (property.stars) {
-        // Loop through each property and checked is it starred by this user.
-        // if (property.stars.user_id === user.id) {
-        //   console.log('Starred by user');
-        // }
+          property.stars.forEach(star => {
+            if (star.user_id === user.id) {
+              property.starred = true;
+            }
+          });
       }
       });
     }, error => {
@@ -93,6 +96,15 @@ export class PropertySearchComponent implements OnInit {
     const user = this.authService.currentUser;
     this.advertService.sendLike(id, user.id).subscribe(data => {
       this.alertify.success('You have starred this property');
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
+  unlike(id: number) {
+    const user = this.authService.currentUser;
+    this.advertService.unlike(id, user.id).subscribe(data => {
+      this.alertify.success('You have unstarred this property');
     }, error => {
       this.alertify.error(error);
     });
